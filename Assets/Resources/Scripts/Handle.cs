@@ -14,7 +14,9 @@ public class Handle                                                             
         {
             Console.WriteLine("Wrong client id...");
         }
-        Server.clients[fromClient].SendToGame(username_received);               //after successful handshake place client (local player) in game field
+        Server.clients[fromClient].SendToLobby(username_received);              //after successful handshake place client (local player) in lobby             
+        
+        //Server.clients[fromClient].SendToGame(username_received);               //after successful handshake place client (local player) in game field
     }
 
     public static void PlayerMovement(int fromClient, Packet packet)            //extract info sent to server about player's movement
@@ -33,4 +35,5 @@ public class Handle                                                             
         Vector3 shooting_direction = packet.ReadVector3();
         Server.clients[fromClient].player.Shoot(shooting_direction);
     }
+
 }

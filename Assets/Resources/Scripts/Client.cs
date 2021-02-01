@@ -182,7 +182,30 @@ public class Client
 
     public void SendToGame(string player_name)                  //send new client (local player) to game field and inform other remote clients about his existence
     {
-        player = NetworkManager.network_manager.InstatiatePlayer(); //initialize player instance
+        player = NetworkManager.network_manager.InstatiatePlayer(client_id); //initialize player instance
+        player.InitializePlayer(client_id, player_name);
+        foreach (Client client in Server.clients.Values)
+        {                                                       //send info from all other players (already connected to the new connected player)
+            if (client.player != null)
+            {
+                if (client.client_id != client_id)                          //for every remote client except local player
+                {
+                    Send.Generate(client_id, client.player);
+                }
+            }
+        }
+        foreach (Client client in Server.clients.Values)                    //send new player's info to all other remote clients (players)
+        {
+            if (client.player != null)
+            {
+                Send.Generate(client.client_id, player);
+            }
+        }
+    }
+
+    public void SendToLobby(string player_name)                  //send new client (local player) to lobby
+    {
+        player = NetworkManager.network_manager.InstatiatePlayer(client_id); //initialize player instance
         player.InitializePlayer(client_id, player_name);
         foreach (Client client in Server.clients.Values)
         {                                                       //send info from all other players (already connected to the new connected player)
