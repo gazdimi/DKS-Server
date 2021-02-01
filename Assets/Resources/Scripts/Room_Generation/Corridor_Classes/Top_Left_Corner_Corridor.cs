@@ -1,0 +1,20 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
+public class Top_Left_Corner_Corridor : Basic_Corridor
+{
+    public Top_Left_Corner_Corridor(List<GameObject> tiles, string type, int tiles_x, int tiles_z) : base(tiles, type, tiles_x, tiles_z)
+    {
+        Available_Sides = DataManager.GetInstance().GetCoridorAvailableSides(this.GetType().Name);
+    }
+
+    public override void CreateRoom(List<GameObject> tiles)
+    {
+        Tile newtile;
+        float xpos = Position.x, ypos = Position.y, zpos = Position.z;
+        newtile = new Tile("Corner_Top_Left", tiles.Where(obj => obj.name == "Corner_Top_Left").First(), new Vector3(xpos, ypos, zpos));
+        RoomTiles.Add(newtile);
+    }
+}
