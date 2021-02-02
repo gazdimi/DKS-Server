@@ -151,7 +151,7 @@ public class Send                                                       //prepar
 
             foreach (GameObject tile in room.Instantiated_Tiles) 
             {
-                string tile_name = tile.name;
+                string tile_name = tile.name.Replace("(Clone)","");
                 Vector3 tile_position = tile.transform.position;
                 Quaternion tile_rotation = tile.transform.rotation;
                 using (Packet packet = new Packet((int)ServerPackets.generate_Tile))

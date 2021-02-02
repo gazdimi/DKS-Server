@@ -212,6 +212,7 @@ public class DungeonGenerator
                     }
                     //Destroy the corridor.
                     Object.Destroy(currrent_room.RoomObject);
+                    currrent_room.RoomObject = null;
                     currrent_room = ((Basic_Corridor)currrent_room).Parent;
                    
                     if (currrent_room.Category == "Room")
@@ -228,6 +229,7 @@ public class DungeonGenerator
             {
                 cleanrooms.Add(room);
             }
+            
         }
         allrooms = cleanrooms;
     }
