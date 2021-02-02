@@ -31,12 +31,13 @@ public class Player : MonoBehaviour                                 //[server-si
         jumping_speed *= Time.fixedDeltaTime;
     }
 
-    public void InitializePlayer(int id, string usern)              //necessary initializations
+    public void InitializePlayer(int id, string usern, Vector3 forward_dir, Vector3 right_dir)              //necessary initializations
     {
         player_id = id;
         username = usern;
         current_health = maximum_health;
-
+        forward = forward_dir;
+        right = right_dir;
         inputs = new float[5];                                       //initialize the array (according to joystick movement)
     }
 
@@ -96,7 +97,6 @@ public class Player : MonoBehaviour                                 //[server-si
         Send.PlayerPosition(this);
         Send.PlayerRotation(this);*/
 
-        Vector3 direction = new Vector3(inputs[0], 0, inputs[1]);
         Vector3 rightMovement = right * moveSpeed * Time.deltaTime * inputs[0];
         Vector3 upMovement = forward * moveSpeed * Time.deltaTime * inputs[1];
 
@@ -105,6 +105,9 @@ public class Player : MonoBehaviour                                 //[server-si
         transform.forward = heading; //in order to move according to camera rotation and NOT global position.
         transform.position += rightMovement;
         transform.position += upMovement;
+
+        Send.PlayerPosition(this);
+        Send.PlayerRotation(this);
     }
 
     public void Shoot(Vector3 facing_direction) 
