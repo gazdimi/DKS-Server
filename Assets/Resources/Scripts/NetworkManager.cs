@@ -31,18 +31,18 @@ public class NetworkManager : MonoBehaviour
     public Player InstatiatePlayer(int client_id) {
         if (client_id == 0)
         {
-            return Instantiate(player_prefab, new Vector3(0.75f, 0.5f, -6f), Quaternion.identity).GetComponent<Player>();     //return attached player component that has been generated
+            return Instantiate(player_prefab, new Vector3(0.75f, 0.8f, -6f), Quaternion.identity).GetComponent<Player>();     //return attached player component that has been generated
         }
         else if (client_id == 1) {
-            return Instantiate(player_prefab, new Vector3(-2.8f, 0.5f, -6f), Quaternion.identity).GetComponent<Player>();     //return attached player component that has been generated
+            return Instantiate(player_prefab, new Vector3(-2.8f, 0.8f, -6f), Quaternion.identity).GetComponent<Player>();     //return attached player component that has been generated
         }
         else if (client_id == 2)
         {
-            return Instantiate(player_prefab, new Vector3(-2.8f, 0.5f, 6.59f), Quaternion.identity).GetComponent<Player>();     //return attached player component that has been generated
+            return Instantiate(player_prefab, new Vector3(-2.8f, 0.8f, 6.59f), Quaternion.identity).GetComponent<Player>();     //return attached player component that has been generated
         }
         else if (client_id == 3)
         {
-            return Instantiate(player_prefab, new Vector3(-2.8f, 0.5f, 0.44f), Quaternion.identity).GetComponent<Player>();     //return attached player component that has been generated
+            return Instantiate(player_prefab, new Vector3(-2.8f, 0.8f, 0.44f), Quaternion.identity).GetComponent<Player>();     //return attached player component that has been generated
         }
         Debug.Log("Player with wrong client id has been trying to instatiate in lobby...");
         return null;

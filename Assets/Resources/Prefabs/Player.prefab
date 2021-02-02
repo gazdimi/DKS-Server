@@ -89,7 +89,6 @@ GameObject:
   m_Component:
   - component: {fileID: 463846926866115016}
   - component: {fileID: 3730565817512437184}
-  - component: {fileID: 5306551505707607128}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -127,31 +126,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player_id: 0
   username: 
-  characterController: {fileID: 5306551505707607128}
+  characterController: {fileID: 0}
   gravity: -9.81
   moving_speed: 5
   jumping_speed: 5
   shoot_point: {fileID: 1646160893740537044}
   current_health: 0
   maximum_health: 100
---- !u!143 &5306551505707607128
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3531138729615690739}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  moveSpeed: 4
+  forward: {x: 0, y: 0, z: 0}
+  right: {x: 0, y: 0, z: 0}
 --- !u!1 &6727614623224880738
 GameObject:
   m_ObjectHideFlags: 0
