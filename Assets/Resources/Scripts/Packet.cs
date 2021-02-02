@@ -14,8 +14,8 @@ public enum ServerPackets
     disconnected_player,
     player_health,
     regenerated_player,
-    generate_tile,
-    generate_room
+    generate_Tile,
+    generate_IRoom
 }
 
 //sent from client to server

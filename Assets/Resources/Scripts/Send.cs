@@ -136,14 +136,15 @@ public class Send                                                       //prepar
         List<IRoom> rooms = DungeonGenerator.GetInstance().allrooms;
         foreach (IRoom room in rooms)
         {
-            string room_name = room.RoomObject.name;
-            Vector3 room_position = room.RoomObject.transform.position;
-            Quaternion room_rotation = room.RoomObject.transform.rotation;
-            using (Packet packet = new Packet((int)ServerPackets.generate_room))
+            using (Packet packet = new Packet((int)ServerPackets.generate_IRoom))
             {
-                packet.Write(room_name);
-                packet.Write(room_position);
-                packet.Write(room_rotation);
+
+                packet.Write(room.RoomObject.name);
+                packet.Write(room.RoomObject.transform.position);
+                packet.Write(room.Tiles_number_x);
+                packet.Write(room.Tiles_number_z);
+                packet.Write(room.Category);
+                packet.Write(room.Type);
                 SendTcpDataToAll(packet);
             }
 
@@ -152,7 +153,7 @@ public class Send                                                       //prepar
                 string tile_name = tile.name;
                 Vector3 tile_position = tile.transform.position;
                 Quaternion tile_rotation = tile.transform.rotation;
-                using (Packet packet = new Packet((int)ServerPackets.generate_tile))
+                using (Packet packet = new Packet((int)ServerPackets.generate_Tile))
                 {
                     packet.Write(tile_name);
                     packet.Write(tile_position);
