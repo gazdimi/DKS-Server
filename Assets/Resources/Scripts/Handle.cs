@@ -21,10 +21,10 @@ public class Handle                                                             
 
     public static void PlayerMovement(int fromClient, Packet packet)            //extract info sent to server about player's movement
     {
-        bool[] inputs = new bool[packet.ReadInt()];
+        float[] inputs = new float[packet.ReadInt()];
         for (int i = 0; i < inputs.Length; i++)
         {
-            inputs[i] = packet.ReadBool();
+            inputs[i] = packet.ReadFloat();
         }
         Quaternion rotation = packet.ReadQuaternion();
         Server.clients[fromClient].player.SetInput(inputs, rotation);           //send extracted info about player's movement (for specified client) to get handled

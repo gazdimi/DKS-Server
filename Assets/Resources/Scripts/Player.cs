@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,7 +16,13 @@ public class Player : MonoBehaviour                                 //[server-si
     public Transform shoot_point;
     public float current_health;
     public float maximum_health = 100f;
-    private bool[] inputs;                                          //store inputs about movement sent from client
+    private float[] inputs;                                          //store inputs about movement sent from client
+
+    //Stathis
+    [SerializeField]
+    float moveSpeed = 4f;
+
+    Vector3 forward, right;
 
     private void Start()
     {
@@ -30,10 +37,10 @@ public class Player : MonoBehaviour                                 //[server-si
         username = usern;
         current_health = maximum_health;
 
-        inputs = new bool[5];                                       //initialize the array (boolean for every keyword that was pressed)
+        inputs = new float[5];                                       //initialize the array (according to joystick movement)
     }
 
-    public void SetInput(bool[] local_inputs, Quaternion local_rotation)    //inputs according to pressed keywords, new rotation according to mouse input
+    public void SetInput(float[] local_inputs, Quaternion local_rotation)    //inputs according to pressed keywords, new rotation according to mouse input
     {
         inputs = local_inputs;
         transform.rotation = local_rotation;
@@ -45,7 +52,12 @@ public class Player : MonoBehaviour                                 //[server-si
         {
             return;
         }
-        Vector2 input_direction = Vector2.zero;
+
+        if (Math.Abs(inputs[0]) > 0.2f || Math.Abs(inputs[1]) > 0.2f)//sets sensitivity for movement.
+        {
+            Move();
+        }
+        /*Vector2 input_direction = Vector2.zero;
         if (inputs[0])
         {
             input_direction.y += 1;
@@ -61,13 +73,13 @@ public class Player : MonoBehaviour                                 //[server-si
         if (inputs[3])
         {
             input_direction.x += 1;
-        }
-        Move(input_direction);
+        }*/
+        //Move(input_direction);
     }
 
-    private void Move(Vector2 input_direction)                      //change player's movement and rotation
+    private void Move()                      //change player's movement and rotation (Vector2 input_direction)
     {
-        Vector3 move_direction = transform.right * input_direction.x + transform.forward * input_direction.y;   //direction to move
+        /*Vector3 move_direction = transform.right * input_direction.x + transform.forward * input_direction.y;   //direction to move
         move_direction *= moving_speed;
         
         if (characterController.isGrounded) {
@@ -80,9 +92,19 @@ public class Player : MonoBehaviour                                 //[server-si
         vertical_speed_y += gravity;
         move_direction.y = vertical_speed_y;
         characterController.Move(move_direction);
-
+        
         Send.PlayerPosition(this);
-        Send.PlayerRotation(this);
+        Send.PlayerRotation(this);*/
+
+        Vector3 direction = new Vector3(inputs[0], 0, inputs[1]);
+        Vector3 rightMovement = right * moveSpeed * Time.deltaTime * inputs[0];
+        Vector3 upMovement = forward * moveSpeed * Time.deltaTime * inputs[1];
+
+        Vector3 heading = Vector3.Normalize(rightMovement + upMovement);
+
+        transform.forward = heading; //in order to move according to camera rotation and NOT global position.
+        transform.position += rightMovement;
+        transform.position += upMovement;
     }
 
     public void Shoot(Vector3 facing_direction) 
