@@ -24,6 +24,8 @@ public class Player : MonoBehaviour                                 //[server-si
 
     public Vector3 forward, right;
 
+    public CharacterController control;
+
     private void Start()
     {
         gravity *= Mathf.Pow(Time.fixedDeltaTime, 2);
@@ -41,10 +43,10 @@ public class Player : MonoBehaviour                                 //[server-si
         inputs = new float[5];                                       //initialize the array (according to joystick movement)
     }
 
-    public void SetInput(float[] local_inputs, Quaternion local_rotation)    //inputs according to pressed keywords, new rotation according to mouse input
+    public void SetInput(float[] local_inputs)//, Quaternion local_rotation)    //inputs according to pressed keywords, new rotation according to mouse input
     {
         inputs = local_inputs;
-        transform.rotation = local_rotation;
+        //transform.rotation = local_rotation;
     }
 
     public void FixedUpdate()                                       //update player's new position (movement) by making suitable calculations

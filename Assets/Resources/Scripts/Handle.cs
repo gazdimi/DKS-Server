@@ -28,8 +28,8 @@ public class Handle                                                             
         {
             inputs[i] = packet.ReadFloat();
         }
-        Quaternion rotation = packet.ReadQuaternion();
-        Server.clients[fromClient].player.SetInput(inputs, rotation);           //send extracted info about player's movement (for specified client) to get handled
+        //Quaternion rotation = packet.ReadQuaternion();
+        Server.clients[fromClient].player.SetInput(inputs);//, rotation);           //send extracted info about player's movement (for specified client) to get handled
     }
 
     public static void Shooted(int fromClient, Packet packet) 
