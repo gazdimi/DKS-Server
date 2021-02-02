@@ -108,7 +108,8 @@ public class Server
             {
                 { (int) ClientPackets.welcomeReceived, Handle.Welcome_Received},
                 { (int) ClientPackets.player_movement, Handle.PlayerMovement},
-                { (int) ClientPackets.shoot, Handle.Shooted }
+                { (int) ClientPackets.shoot, Handle.Shooted },
+                { (int) ClientPackets.startgame, Handle.StartGame }
             };
         Console.WriteLine($"Server: initiliazation of packets have been completed");
     }

@@ -36,4 +36,8 @@ public class Handle                                                             
         Server.clients[fromClient].player.Shoot(shooting_direction);
     }
 
+    public static void StartGame(int fromClient, Packet packet)
+    {
+        Send.GenerateDungeon();
+    }
 }

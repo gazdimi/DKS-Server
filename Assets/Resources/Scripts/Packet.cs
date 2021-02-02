@@ -23,7 +23,8 @@ public enum ClientPackets
 {
     welcomeReceived = 1,
     player_movement,
-    shoot
+    shoot,
+    startgame
 }
 
 public class Packet : IDisposable                               //interface that provides a mechanism for releasing unmanaged resources

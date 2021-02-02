@@ -133,6 +133,7 @@ public class Send                                                       //prepar
 
     public static void GenerateDungeon() 
     {
+        DungeonGenerator.GetInstance().CompleteDungeon(Stage_Manager.GetInstance().GetNextFloorRoomNumber());
         List<IRoom> rooms = DungeonGenerator.GetInstance().allrooms;
         foreach (IRoom room in rooms)
         {
