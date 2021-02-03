@@ -26,6 +26,10 @@ public class ServerPlayer : MonoBehaviour                                 //[ser
 
     public CharacterController control;
 
+    public float neuro = 0;
+    public float extra = 0;
+    public float certainty = 0;
+
     private void Start()
     {
         gravity *= Mathf.Pow(Time.fixedDeltaTime, 2);
@@ -82,7 +86,7 @@ public class ServerPlayer : MonoBehaviour                                 //[ser
         {
             if (raycastHit.collider.CompareTag("Player"))                                           //check if hitted collider was tagged as Player
             {
-                raycastHit.collider.GetComponent<Player>().ReceiveDamage(10f);
+                raycastHit.collider.GetComponent<ServerPlayer>().ReceiveDamage(10f);
             }
         }
     }

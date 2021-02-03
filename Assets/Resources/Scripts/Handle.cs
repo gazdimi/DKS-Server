@@ -41,7 +41,13 @@ public class Handle                                                             
 
     public static void StartGame(int fromClient, Packet packet)
     {
-        SceneManager.LoadScene("DungeonScene");
-        
+        SceneManager.LoadScene("DungeonScene");        
+    }
+
+    public static void PenValues(int fromClient, Packet packet)
+    {
+        Server.clients[fromClient].player.neuro = packet.ReadFloat();
+        Server.clients[fromClient].player.extra = packet.ReadFloat();
+        Server.clients[fromClient].player.certainty = packet.ReadFloat();
     }
 }

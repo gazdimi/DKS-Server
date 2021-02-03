@@ -16,7 +16,8 @@ public enum ServerPackets
     regenerated_player,
     generate_Tile,
     generate_IRoom,
-    dungeon_player_position
+    dungeon_player_position,
+    askPen
 }
 
 //sent from client to server
@@ -25,7 +26,8 @@ public enum ClientPackets
     welcomeReceived = 1,
     player_movement,
     shoot,
-    startgame
+    startgame,
+    pen_values
 }
 
 public class Packet : IDisposable                               //interface that provides a mechanism for releasing unmanaged resources

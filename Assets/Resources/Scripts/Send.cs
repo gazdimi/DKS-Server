@@ -176,4 +176,12 @@ public class Send                                                       //prepar
             SendTcpDataToAll(packet);
         }
     }
+
+    public static void AskPen()
+    {
+        using (Packet packet = new Packet((int)ServerPackets.askPen))
+        {
+            SendTcpDataToAll(packet);
+        }
+    }
 }

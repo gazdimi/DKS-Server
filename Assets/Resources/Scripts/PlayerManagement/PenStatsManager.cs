@@ -19,6 +19,8 @@ public class PenStatsManager
         instance = this;
     }
     #endregion
+
+    /*
     /// <summary>
     /// Get all player pen stats.
     /// </summary>
@@ -30,6 +32,8 @@ public class PenStatsManager
             player.GetComponent<CharacterBehaviour>().pen.GetExtraversion(),
             player.GetComponent<CharacterBehaviour>().pen.GetCertainty());
     }
+    */
+
     /// <summary>
     /// Get the arithmetic mean pen characteristics from selected player's list.
     /// </summary>
@@ -42,9 +46,14 @@ public class PenStatsManager
         float certain = 0;
         foreach(GameObject player in players)
         {
+            neuro += player.GetComponent<ServerPlayer>().neuro;
+            extra += player.GetComponent<ServerPlayer>().extra;
+            certain += player.GetComponent<ServerPlayer>().certainty;
+            /*
             neuro += player.GetComponent<CharacterBehaviour>().pen.GetNeurotism();
             extra += player.GetComponent<CharacterBehaviour>().pen.GetExtraversion();
             certain += player.GetComponent<CharacterBehaviour>().pen.GetCertainty();
+            */
         }
         return (neuro / players.Count, extra / players.Count, certain / players.Count);   
     }

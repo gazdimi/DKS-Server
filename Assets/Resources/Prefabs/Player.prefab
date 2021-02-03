@@ -138,6 +138,9 @@ MonoBehaviour:
   forward: {x: 0, y: 0, z: 0}
   right: {x: 0, y: 0, z: 0}
   control: {fileID: 0}
+  neuro: 0
+  extra: 0
+  certainty: 0
 --- !u!54 &5914986435215115490
 Rigidbody:
   m_ObjectHideFlags: 0
