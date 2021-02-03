@@ -7,7 +7,7 @@ public class Player : MonoBehaviour                                 //[server-si
 {
     public int player_id;
     public string username;
-    //public CharacterController characterController;                 //player's reference to unity's character controller
+ 
     public float gravity = (-9.81f) * 2;                                  //gravity acceleration
 
     public float moving_speed = 5f;                                 //player's move speed (calculate like multiplying by unity's time.deltatime)
@@ -40,7 +40,7 @@ public class Player : MonoBehaviour                                 //[server-si
         current_health = maximum_health;
         forward = forward_dir;
         right = right_dir;
-        inputs = new float[5];                                       //initialize the array (according to joystick movement)
+        inputs = new float[2];                                       //initialize the array (according to joystick movement)
     }
 
     public void SetInput(float[] local_inputs)//, Quaternion local_rotation)    //inputs according to pressed keywords, new rotation according to mouse input

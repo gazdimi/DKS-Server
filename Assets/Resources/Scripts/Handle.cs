@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class Handle                                                             //server handle game input, data send from client
 {
@@ -40,6 +41,14 @@ public class Handle                                                             
 
     public static void StartGame(int fromClient, Packet packet)
     {
+        SceneManager.LoadScene("DungeonScene");
         Send.GenerateDungeon();
+        PlayerManager.GetInstance().SpawnPlayers();
+
+        List<GameObject> activePlayers = PlayerManager.GetInstance().GetActivePlayers();
+        for (int i = 0; i < activePlayers.Count; i++)
+        {
+            Send.Teleport(activePlayers[i].GetComponent<Player>());
+        }
     }
 }

@@ -133,6 +133,7 @@ public class Send                                                       //prepar
 
     public static void GenerateDungeon() 
     {
+        
         DungeonGenerator.GetInstance().CompleteDungeon(Stage_Manager.GetInstance().GetNextFloorRoomNumber());
         List<IRoom> rooms = DungeonGenerator.GetInstance().allrooms;
         foreach (IRoom room in rooms)
@@ -163,6 +164,16 @@ public class Send                                                       //prepar
                 }
             }
 
+        }
+    }
+
+    public static void Teleport(Player player)                              //inform all players about a player's position
+    {
+        using (Packet packet = new Packet((int)ServerPackets.player_position))
+        {
+            packet.Write(player.player_id);
+            packet.Write(player.transform.position);                        //write to the packet player's new position
+            SendTcpDataToAll(packet);
         }
     }
 }

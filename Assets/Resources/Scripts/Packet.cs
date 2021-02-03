@@ -15,7 +15,8 @@ public enum ServerPackets
     player_health,
     regenerated_player,
     generate_Tile,
-    generate_IRoom
+    generate_IRoom,
+    dungeon_player_position
 }
 
 //sent from client to server
