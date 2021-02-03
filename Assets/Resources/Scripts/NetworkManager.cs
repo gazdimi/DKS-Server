@@ -23,6 +23,7 @@ public class NetworkManager : MonoBehaviour
     //Start is called before the first frame update
     private void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
         QualitySettings.vSyncCount = 0;                         //unity settings about fps
         Application.targetFrameRate = 30;
         Server.StartServer(4, 26950);

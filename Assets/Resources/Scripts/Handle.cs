@@ -42,13 +42,6 @@ public class Handle                                                             
     public static void StartGame(int fromClient, Packet packet)
     {
         SceneManager.LoadScene("DungeonScene");
-        Send.GenerateDungeon();
-        PlayerManager.GetInstance().SpawnPlayers();
-
-        List<GameObject> activePlayers = PlayerManager.GetInstance().GetActivePlayers();
-        for (int i = 0; i < activePlayers.Count; i++)
-        {
-            Send.Teleport(activePlayers[i].GetComponent<Player>());
-        }
+        
     }
 }

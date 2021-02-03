@@ -121,7 +121,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &1023363222
+--- !u!1 &649438963
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,51 +129,36 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1023363225}
-  - component: {fileID: 1023363224}
-  - component: {fileID: 1023363223}
+  - component: {fileID: 649438965}
+  - component: {fileID: 649438964}
   m_Layer: 0
-  m_Name: NetworkManager
+  m_Name: Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1023363223
+--- !u!114 &649438964
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1023363222}
+  m_GameObject: {fileID: 649438963}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 528a9ba061f663e4eadd1cb989970fd0, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b70e9f58f4b2284b915f50689f799f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1023363224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1023363222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42a11e6ddd923fb4b91ae10bd753a348, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player_prefab: {fileID: 3531138729615690739, guid: 70c520547b2fdc744b7938d027d75aa6,
-    type: 3}
---- !u!4 &1023363225
+--- !u!4 &649438965
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1023363222}
+  m_GameObject: {fileID: 649438963}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.4151707, y: 2.8353853, z: 2.4430637}
+  m_LocalPosition: {x: -4.3988843, y: 4.088724, z: -4.821743}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
