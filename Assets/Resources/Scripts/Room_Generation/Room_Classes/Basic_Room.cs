@@ -357,21 +357,25 @@ public abstract class Basic_Room : IRoom
         {
             int doorindex = CalculateOpening("Top");
             Instantiated_Tiles[doorindex].GetComponent<Animator>().SetBool("isOpen", false);
+            Send.RemoteDoors(Instantiated_Tiles[doorindex].transform.position, false);
         }
         if (AdjRoomLeft != null)
         {
             int doorindex = CalculateOpening("Left");
             Instantiated_Tiles[doorindex].GetComponent<Animator>().SetBool("isOpen", false);
+            Send.RemoteDoors(Instantiated_Tiles[doorindex].transform.position, false);
         }
         if (AdjRoomRight != null)
         {
             int doorindex = CalculateOpening("Right");
             Instantiated_Tiles[doorindex].GetComponent<Animator>().SetBool("isOpen", false);
+            Send.RemoteDoors(Instantiated_Tiles[doorindex].transform.position, false);
         }
         if (AdjRoomBottom != null)
         {
             int doorindex = CalculateOpening("Bottom");
             Instantiated_Tiles[doorindex].GetComponent<Animator>().SetBool("isOpen", false);
+            Send.RemoteDoors(Instantiated_Tiles[doorindex].transform.position, false);
         }
     }
     /// <summary>
@@ -383,21 +387,25 @@ public abstract class Basic_Room : IRoom
         {
             int doorindex = CalculateOpening("Top");
             Instantiated_Tiles[doorindex].GetComponent<Animator>().SetBool("isOpen", true);
+            Send.RemoteDoors(Instantiated_Tiles[doorindex].transform.position, true);
         }
         if (AdjRoomLeft != null)
         {
             int doorindex = CalculateOpening("Left");
             Instantiated_Tiles[doorindex].GetComponent<Animator>().SetBool("isOpen", true);
+            Send.RemoteDoors(Instantiated_Tiles[doorindex].transform.position, true);
         }
         if (AdjRoomRight != null)
         {
             int doorindex = CalculateOpening("Right");
             Instantiated_Tiles[doorindex].GetComponent<Animator>().SetBool("isOpen", true);
+            Send.RemoteDoors(Instantiated_Tiles[doorindex].transform.position, true);
         }
         if (AdjRoomBottom != null)
         {
             int doorindex = CalculateOpening("Bottom");
             Instantiated_Tiles[doorindex].GetComponent<Animator>().SetBool("isOpen", true);
+            Send.RemoteDoors(Instantiated_Tiles[doorindex].transform.position, true);
         }
 
     }
