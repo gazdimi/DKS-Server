@@ -193,4 +193,14 @@ public class Send                                                       //prepar
             SendTcpDataToAll(packet);
         }
     }
+
+    public static void WeaponLocation(string name, Vector3 location)
+    {
+        using (Packet packet = new Packet((int)ServerPackets.weaponLocation))
+        {
+            packet.Write(name);
+            packet.Write(location);
+            SendTcpDataToAll(packet);
+        }
+    }
 }

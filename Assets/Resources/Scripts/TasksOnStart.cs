@@ -19,8 +19,8 @@ public class TasksOnStart : MonoBehaviour
                 Send.Teleport(activePlayers[i].GetComponent<ServerPlayer>());
             }
 
-            SpawnWeapon.SpawnRanged("Handgun", new Vector3(30, 1.5f, -30));
-            SpawnWeapon.SpawnMelee("Sword", new Vector3(20, 1.5f, -30));
+            SpawnWeapon.Spawn("Handgun", new Vector3(30, 1.5f, -30));
+            SpawnWeapon.Spawn("Sword", new Vector3(20, 1.5f, -30));
         }
         
     }

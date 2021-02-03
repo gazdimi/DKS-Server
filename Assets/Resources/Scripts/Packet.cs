@@ -17,7 +17,8 @@ public enum ServerPackets
     generate_Tile,
     generate_IRoom,
     askPen,
-    remoteDoor
+    remoteDoor,
+    weaponLocation
 }
 
 //sent from client to server

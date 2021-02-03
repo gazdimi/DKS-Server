@@ -4,25 +4,28 @@ using UnityEngine;
 
 public class SpawnWeapon
 {
-    public static void SpawnMelee(string weapon, Vector3 location)
+    public static void Spawn(string weapon, Vector3 location)
     {
-        List<GameObject> meleeweapons = new List<GameObject>(Resources.LoadAll<GameObject>("Prefabs/Equipment/Weapons/Melee"));
-        Spawn(weapon, meleeweapons, location);
-    }
-
-    public static void SpawnRanged(string weapon, Vector3 location)
-    {
-        List<GameObject> rangedweapons = new List<GameObject>(Resources.LoadAll<GameObject>("Prefabs/Equipment/Weapons/Ranged"));
-        Spawn(weapon, rangedweapons, location);
-    }
-
-    static void Spawn(string weapon, List<GameObject> weapons, Vector3 location)
-    {
-        foreach(GameObject prefab in weapons)
+        List<GameObject> weaponsList = new List<GameObject>(Resources.LoadAll<GameObject>("Prefabs/Equipment/Weapons/Melee"));
+        bool isRanged = true;
+        foreach (GameObject p in weaponsList)
+        {
+            if (p.name.Equals(weapon))
+            {
+                isRanged = false;
+                break;
+            }
+        }
+        if (isRanged)
+        {
+            weaponsList = new List<GameObject>(Resources.LoadAll<GameObject>("Prefabs/Equipment/Weapons/Ranged"));
+        }
+        foreach (GameObject prefab in weaponsList)
         {
             if (prefab.name.Equals(weapon))
             {
                 GameObject.Instantiate(prefab, location, new Quaternion());
+                Send.WeaponLocation(weapon, location);
                 break;
             }
         }
