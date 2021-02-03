@@ -16,7 +16,7 @@ public class TasksOnStart : MonoBehaviour
             List<GameObject> activePlayers = PlayerManager.GetInstance().GetActivePlayers();
             for (int i = 0; i < activePlayers.Count; i++)
             {
-                Send.Teleport(activePlayers[i].GetComponent<Player>());
+                Send.Teleport(activePlayers[i].GetComponent<ServerPlayer>());
             }
         }
         

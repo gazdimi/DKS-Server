@@ -29,34 +29,34 @@ public class NetworkManager : MonoBehaviour
         Server.StartServer(4, 26950);
     }
 
-    public Player InstatiatePlayer(int client_id) {
+    public ServerPlayer InstatiatePlayer(int client_id) {
         GameObject player;
         if (client_id == 1)
         {
             player = Instantiate(player_prefab, new Vector3(-0.94f, 1.15f, -8.9f), Quaternion.identity);     //return attached player component that has been generated
             PlayerManager.GetInstance().AddPlayer(player);
             DontDestroyOnLoad(player);
-            return player.GetComponent<Player>();
+            return player.GetComponent<ServerPlayer>();
         }
         else if (client_id == 2) {
             player = Instantiate(player_prefab, new Vector3(-2.32f, 1.15f, -6.75f), Quaternion.identity);     //return attached player component that has been generated
             PlayerManager.GetInstance().AddPlayer(player);
             DontDestroyOnLoad(player);
-            return player.GetComponent<Player>();
+            return player.GetComponent<ServerPlayer>();
         }
         else if (client_id == 3)
         {
             player = Instantiate(player_prefab, new Vector3(-2.29f, 1.15f, -10.63f), Quaternion.identity);     //return attached player component that has been generated
             PlayerManager.GetInstance().AddPlayer(player);
             DontDestroyOnLoad(player);
-            return player.GetComponent<Player>();
+            return player.GetComponent<ServerPlayer>();
         }
         else if (client_id == 4)
         {
             player = Instantiate(player_prefab, new Vector3(-3.99f, 1.15f, -8.91f), Quaternion.identity);     //return attached player component that has been generated
             PlayerManager.GetInstance().AddPlayer(player);
             DontDestroyOnLoad(player);
-            return player.GetComponent<Player>();
+            return player.GetComponent<ServerPlayer>();
         }
         Debug.Log("Player with wrong client id has been trying to instatiate in lobby...");
         return null;

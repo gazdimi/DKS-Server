@@ -149,7 +149,7 @@ public class DungeonGenerator
             gr.AddComponent<BoxCollider>();//Create new collider for the room.
             gr.GetComponent<BoxCollider>().size = new Vector3(room.Tiles_number_x * Tile.X_length - 2, 5, room.Tiles_number_z * Tile.Z_length - 2);//Set the size of the collider to cover all the room.
             gr.GetComponent<BoxCollider>().isTrigger = true;//Set collider to trigger.
-            //gr.AddComponent<RoomEventsHandler>();
+            gr.AddComponent<RoomEventsHandler>();
         }
         if (room.Type == "EndRoom")
         {

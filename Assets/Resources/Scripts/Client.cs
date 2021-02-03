@@ -11,7 +11,7 @@ public class Client
     public TCP tcp;
     public UDP udp;
     public static int dataBufferSize = 4096;                    //bytes
-    public Player player;                                       //reference to player
+    public ServerPlayer player;                                       //reference to player
 
     public Client(int ci)                                       //constructor of outter class Client
     {

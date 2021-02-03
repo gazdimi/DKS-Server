@@ -71,7 +71,7 @@ public class Send                                                       //prepar
     }
 
     //---------------------------------------------player initialization and movement------------------------
-    public static void Generate(int toClient, Player player)
+    public static void Generate(int toClient, ServerPlayer player)
     {
         using (Packet packet = new Packet((int)ServerPackets.generated_player))     //after generating player send him a test packet
         {
@@ -83,7 +83,7 @@ public class Send                                                       //prepar
         }
     }
 
-    public static void PlayerPosition(Player player)                        //inform all players about a player's position
+    public static void PlayerPosition(ServerPlayer player)                        //inform all players about a player's position
     {
         using (Packet packet = new Packet((int)ServerPackets.player_position))
         {
@@ -93,7 +93,7 @@ public class Send                                                       //prepar
         }
     }
 
-    public static void PlayerRotation(Player player)                        //inform all players about a player's rotation
+    public static void PlayerRotation(ServerPlayer player)                        //inform all players about a player's rotation
     {
         using (Packet packet = new Packet((int)ServerPackets.player_rotation))
         {
@@ -112,7 +112,7 @@ public class Send                                                       //prepar
         }
     }
 
-    public static void PlayerHealth(Player player)                          //inform all players if someone's health has changed
+    public static void PlayerHealth(ServerPlayer player)                          //inform all players if someone's health has changed
     {
         using (Packet packet = new Packet((int)ServerPackets.player_health)) 
         {
@@ -122,7 +122,7 @@ public class Send                                                       //prepar
         }
     }
 
-    public static void RegeneratePlayer(Player player) 
+    public static void RegeneratePlayer(ServerPlayer player) 
     {
         using (Packet packet = new Packet((int)ServerPackets.regenerated_player)) 
         {
@@ -167,7 +167,7 @@ public class Send                                                       //prepar
         }
     }
 
-    public static void Teleport(Player player)                              //inform all players about a player's position
+    public static void Teleport(ServerPlayer player)                              //inform all players about a player's position
     {
         using (Packet packet = new Packet((int)ServerPackets.player_position))
         {
