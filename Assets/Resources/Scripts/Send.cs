@@ -184,4 +184,13 @@ public class Send                                                       //prepar
             SendTcpDataToAll(packet);
         }
     }
+    public static void RemoteDoors(Vector3 doorLoc,bool isopen)
+    {
+        using (Packet packet = new Packet((int)ServerPackets.remoteDoor))
+        {
+            packet.Write(doorLoc);
+            packet.Write(isopen);
+            SendTcpDataToAll(packet);
+        }
+    }
 }

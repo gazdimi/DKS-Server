@@ -51,8 +51,8 @@ public class Battle
     /// <param name="player"></param>
     public void AddPlayer(GameObject player)
     {
-        player.GetComponent<Player>().enterCombat();
-        playersInvolved.Add(player);
+      //  player.GetComponent<Player>().enterCombat();
+      //  playersInvolved.Add(player);
     }
     /// <summary>
     /// Removes a player from the battle.
