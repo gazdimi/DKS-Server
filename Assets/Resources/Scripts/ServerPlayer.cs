@@ -31,13 +31,15 @@ public class ServerPlayer : MonoBehaviour                                 //[ser
     public float certainty = 0;
 
     public GameObject hand;
-    public int active_weapon_id;
+    public float activeWeapon = -1;
+    List<GameObject> weapons;
 
     private void Start()
     {
         gravity *= Mathf.Pow(Time.fixedDeltaTime, 2);
         moving_speed *= Time.fixedDeltaTime;
         jumping_speed *= Time.fixedDeltaTime;
+        weapons = new List<GameObject> ();
     }
 
     public void InitializePlayer(int id, string usern, Vector3 forward_dir, Vector3 right_dir)              //necessary initializations
@@ -83,12 +85,17 @@ public class ServerPlayer : MonoBehaviour                                 //[ser
         Send.PlayerRotation(this);
     }
 
-    public void ShowWeapon(GameObject shown)
+    public void ShowWeapon(float weapon_id)
     {
-        shown.SetActive(true);
-        shown.transform.worldToLocalMatrix.MultiplyVector(hand.transform.forward);
-        shown.transform.parent = hand.transform;
-        shown.transform.rotation = new Quaternion(0, 0, 0, 0);
+        foreach (GameObject weapon in GameObject.FindGameObjectsWithTag("Equipment")) 
+        {
+            if(weapon.GetComponent<WeaponData>().GetID() == weapon_id)
+            {
+                activeWeapon = weapon_id;
+                weapons.Add(weapon);
+                break;
+            }
+        }
     }
 
     public void Shoot(Vector3 facing_direction) 

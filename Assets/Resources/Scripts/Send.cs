@@ -205,6 +205,15 @@ public class Send                                                       //prepar
         }
     }
 
+    public static void RemotePlayerWeapon(int player_id, float weapon_id) {
+        using (Packet packet = new Packet((int)ServerPackets.remotePlayerWeapon)) 
+        {
+            packet.Write(player_id);
+            packet.Write(weapon_id);
+            SendTcpDataToAll(player_id, packet);
+        }
+    }
+
     public static void SpawnEnemy(string name, Vector3 location)
     {
         using (Packet packet = new Packet((int)ServerPackets.spawnEnemy))

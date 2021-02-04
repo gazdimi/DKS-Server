@@ -19,6 +19,7 @@ public enum ServerPackets
     askPen,
     remoteDoor,
     weaponLocation,
+    remotePlayerWeapon
     spawnEnemy,
     spawnMod
 }
