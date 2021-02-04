@@ -138,6 +138,7 @@ public abstract class Basic_Enemy:MonoBehaviour
         {
             if (mBase.AttachModification(mod))
             {
+                Send.SpawnMod(mod_type, ConnectionEnemyHandler.GetInstance().allExistingEnemies.FindIndex(x=>x==gameObject));
                 Apply_Modification_Boosts();
                 foreach (GameObject player in Battle_Manager.GetInstance().GetBattle(gameObject).GetPlayers())
                 {

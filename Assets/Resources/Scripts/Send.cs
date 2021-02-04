@@ -204,4 +204,23 @@ public class Send                                                       //prepar
             SendTcpDataToAll(packet);
         }
     }
+
+    public static void SpawnEnemy(string name, Vector3 location)
+    {
+        using (Packet packet = new Packet((int)ServerPackets.spawnEnemy))
+        {
+            packet.Write(name);
+            packet.Write(location);
+            SendTcpDataToAll(packet);
+        }
+    }
+    public static void SpawnMod(string modname, int enemyid)
+    {
+        using (Packet packet = new Packet((int)ServerPackets.spawnMod))
+        {
+            packet.Write(modname);
+            packet.Write(enemyid);
+            SendTcpDataToAll(packet);
+        }
+    }
 }
