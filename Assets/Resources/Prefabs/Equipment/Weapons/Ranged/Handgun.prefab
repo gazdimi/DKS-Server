@@ -200,6 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2414516386426228916}
   - component: {fileID: 7910514132328087005}
+  - component: {fileID: -6603008122619100605}
   m_Layer: 0
   m_Name: Handgun
   m_TagString: Equipment
@@ -235,3 +236,15 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-6603008122619100605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2414516386426228918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 249ae3acf89f9934186ffd658c317dfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

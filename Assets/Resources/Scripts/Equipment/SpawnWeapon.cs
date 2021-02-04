@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,8 +25,10 @@ public class SpawnWeapon
         {
             if (prefab.name.Equals(weapon))
             {
-                GameObject.Instantiate(prefab, location, new Quaternion());
-                Send.WeaponLocation(weapon, location);
+                float id = Time.realtimeSinceStartup + UnityEngine.Random.Range(1f, 20f);
+                GameObject g = GameObject.Instantiate(prefab, location, new Quaternion());
+                g.GetComponent<WeaponData>().SetID(id);
+                Send.WeaponLocation(weapon, location, id);
                 break;
             }
         }
