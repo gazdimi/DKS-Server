@@ -110,7 +110,8 @@ public class Server
                 { (int) ClientPackets.player_movement, Handle.PlayerMovement},
                 { (int) ClientPackets.shoot, Handle.Shooted },
                 { (int) ClientPackets.startgame, Handle.StartGame },
-                { (int) ClientPackets.pen_values, Handle.PenValues }
+                { (int) ClientPackets.pen_values, Handle.PenValues },
+                { (int) ClientPackets.hold_weapon, Handle.PlayerHoldWeapon }
             };
         Console.WriteLine($"Server: initiliazation of packets have been completed");
     }
