@@ -141,10 +141,12 @@ public abstract class Basic_Enemy:MonoBehaviour
                 Apply_Modification_Boosts();
                 foreach (GameObject player in Battle_Manager.GetInstance().GetBattle(gameObject).GetPlayers())
                 {
+                    /*
                     if (player.GetComponent<LockOnTarget>().targetedCreature.Equals(gameObject))
                     {
                         player.GetComponent<LockOnTarget>().RefreshTargets();
                     }
+                    */
                 }
             }
         }

@@ -31,7 +31,7 @@ public class Enemy_Bullet : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            other.GetComponent<Player>().TakeDamage(damage);
+          //  other.GetComponent<Player>().TakeDamage(damage);
         }
         Destroy(gameObject);
     }
