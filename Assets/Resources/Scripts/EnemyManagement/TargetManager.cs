@@ -29,15 +29,20 @@ public class TargetManager
     {
         float distance;
         int index = 0;
-        distance = Vector3.Distance(entity.transform.position, targets[0].transform.position);
-        for(int i=1; i < targets.Count; i++)
+        if (targets.Count > 0)
         {
-            if(Vector3.Distance(entity.transform.position, targets[i].transform.position) < distance)
+            distance = Vector3.Distance(entity.transform.position, targets[0].transform.position);
+
+            for (int i = 1; i < targets.Count; i++)
             {
-                distance = Vector3.Distance(entity.transform.position, targets[i].transform.position);
-                index = i;
+                if (Vector3.Distance(entity.transform.position, targets[i].transform.position) < distance)
+                {
+                    distance = Vector3.Distance(entity.transform.position, targets[i].transform.position);
+                    index = i;
+                }
             }
+            return targets[index];
         }
-        return targets[index];
+        return null;
     }
 }

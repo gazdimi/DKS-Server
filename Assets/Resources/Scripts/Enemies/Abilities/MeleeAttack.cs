@@ -45,7 +45,7 @@ public class MeleeAttack : Basic_Ability
         Debug.Log("Executing Melee Attack");
         enemyScript.preparingAttack = false;
         enemyScript.attacking = true;
-        enemyScript.target.GetComponent<Player>().TakeDamage(DealDamage());
+       // enemyScript.target.GetComponent<Player>().TakeDamage(DealDamage());
         Invoke("EndAttack", timeToEnd);
     }
 

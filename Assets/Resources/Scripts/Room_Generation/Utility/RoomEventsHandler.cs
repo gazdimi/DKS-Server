@@ -22,11 +22,11 @@ public class RoomEventsHandler : MonoBehaviour
         {
             if (other.gameObject.tag.Equals("Player"))
             {
-              //  Battle_Manager.GetInstance().GetBattle(thisRoom).AddPlayer(other.gameObject);
+                Battle_Manager.GetInstance().GetBattle(thisRoom).AddPlayer(other.gameObject);
             }
             else if (other.gameObject.tag.Equals("Enemy"))
             {
-               // Battle_Manager.GetInstance().GetBattle(thisRoom).AddEnemy(other.gameObject);
+                Battle_Manager.GetInstance().GetBattle(thisRoom).AddEnemy(other.gameObject);
             }
         }
         else
@@ -37,8 +37,8 @@ public class RoomEventsHandler : MonoBehaviour
                 {
                     thisRoom.SetExplored(true);
                     thisRoom.CloseDoors();
-                  //  Battle_Manager.GetInstance().AddBattle(new Battle(thisRoom, other.gameObject));
-                  //  StartCoroutine(Battle_Manager.GetInstance().GetBattle(thisRoom).SpawnEnemies());
+                    Battle_Manager.GetInstance().AddBattle(new Battle(thisRoom, other.gameObject));
+                    StartCoroutine(Battle_Manager.GetInstance().GetBattle(thisRoom).SpawnEnemies());
                 }
             }
         }
