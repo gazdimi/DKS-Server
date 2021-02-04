@@ -30,6 +30,9 @@ public class ServerPlayer : MonoBehaviour                                 //[ser
     public float extra = 0;
     public float certainty = 0;
 
+    public GameObject hand;
+    public int active_weapon_id;
+
     private void Start()
     {
         gravity *= Mathf.Pow(Time.fixedDeltaTime, 2);
@@ -78,6 +81,14 @@ public class ServerPlayer : MonoBehaviour                                 //[ser
 
         Send.PlayerPosition(this);
         Send.PlayerRotation(this);
+    }
+
+    public void ShowWeapon(GameObject shown)
+    {
+        shown.SetActive(true);
+        shown.transform.worldToLocalMatrix.MultiplyVector(hand.transform.forward);
+        shown.transform.parent = hand.transform;
+        shown.transform.rotation = new Quaternion(0, 0, 0, 0);
     }
 
     public void Shoot(Vector3 facing_direction) 

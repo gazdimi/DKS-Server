@@ -28,7 +28,8 @@ public enum ClientPackets
     player_movement,
     shoot,
     startgame,
-    pen_values
+    pen_values,
+    hold_weapon
 }
 
 public class Packet : IDisposable                               //interface that provides a mechanism for releasing unmanaged resources

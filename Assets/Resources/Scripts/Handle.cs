@@ -50,4 +50,12 @@ public class Handle                                                             
         Server.clients[fromClient].player.extra = packet.ReadFloat();
         Server.clients[fromClient].player.certainty = packet.ReadFloat();
     }
+
+    public static void PlayerHoldWeapon(int fromClient, Packet packet) 
+    {
+        GameObject weapon = GameObject.Find(packet.ReadString());
+        Server.clients[fromClient].player.ShowWeapon(weapon);
+
+
+    }
 }
