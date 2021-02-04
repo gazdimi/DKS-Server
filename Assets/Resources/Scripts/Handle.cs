@@ -53,9 +53,11 @@ public class Handle                                                             
 
     public static void PlayerHoldWeapon(int fromClient, Packet packet) 
     {
-        GameObject weapon = GameObject.Find(packet.ReadString());
-        Server.clients[fromClient].player.ShowWeapon(weapon);
-
+        int player_id = packet.ReadInt();                                       //the one holding the weapon
+        float weapon_id = packet.ReadFloat();
+        
+        Server.clients[fromClient].player.ShowWeapon(weapon_id);
+        Send.RemotePlayerWeapon(player_id, weapon_id);
 
     }
 }
