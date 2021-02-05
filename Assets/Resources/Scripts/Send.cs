@@ -232,4 +232,14 @@ public class Send                                                       //prepar
             SendTcpDataToAll(packet);
         }
     }
+    public static void MoveEnemy(Vector3 enemyLoc, Quaternion enemyRot,int id)
+    {
+        using (Packet packet = new Packet((int)ServerPackets.moveEnemy))
+        {
+            packet.Write(enemyLoc);
+            packet.Write(enemyRot);
+            packet.Write(id);
+            SendUdpDataToAll(packet);
+        }
+    }
 }

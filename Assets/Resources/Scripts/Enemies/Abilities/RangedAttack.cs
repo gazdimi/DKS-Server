@@ -22,6 +22,7 @@ public class RangedAttack : Basic_Ability
         if (enemyScript.target != null)
         {
             transform.rotation = Quaternion.LookRotation(enemyScript.target.transform.position - transform.position);
+            Send.MoveEnemy(transform.position, transform.rotation, ConnectionEnemyHandler.GetInstance().allExistingEnemies.FindIndex(x => x == gameObject));
         }
 
         CoolDownTime();
@@ -36,6 +37,7 @@ public class RangedAttack : Basic_Ability
             }
             
             transform.position += transform.forward * enemyScript.current_speed * Time.deltaTime;
+            Send.MoveEnemy(transform.position, transform.rotation, ConnectionEnemyHandler.GetInstance().allExistingEnemies.FindIndex(x => x == gameObject));
         }
     }
 

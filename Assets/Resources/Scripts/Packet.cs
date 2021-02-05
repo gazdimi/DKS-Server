@@ -21,7 +21,8 @@ public enum ServerPackets
     weaponLocation,
     remotePlayerWeapon,
     spawnEnemy,
-    spawnMod
+    spawnMod,
+    moveEnemy
 }
 
 //sent from client to server
