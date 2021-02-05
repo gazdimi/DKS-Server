@@ -25,6 +25,7 @@ public class BashingAttack : Basic_Ability
         if (executingAttack)
         {
             transform.position += transform.forward *enemyScript.max_movement_speed*2* Time.deltaTime;
+            Send.MoveEnemy(transform.position, transform.rotation, ConnectionEnemyHandler.GetInstance().allExistingEnemies.FindIndex(x => x == gameObject));
         }
     }
 

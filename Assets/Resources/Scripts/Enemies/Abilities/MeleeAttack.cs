@@ -61,5 +61,6 @@ public class MeleeAttack : Basic_Ability
         }
         transform.LookAt(new Vector3(enemyScript.target.transform.position.x,gameObject.transform.position.y, enemyScript.target.transform.position.z));
         transform.position += transform.forward * enemyScript.current_speed * Time.deltaTime;
+        Send.MoveEnemy(transform.position, transform.rotation, ConnectionEnemyHandler.GetInstance().allExistingEnemies.FindIndex(x => x == gameObject));
     }
 }
