@@ -242,4 +242,12 @@ public class Send                                                       //prepar
             SendUdpDataToAll(packet);
         }
     }
+    public static void InCombat(int player_id,bool isInCombat)
+    {
+        using (Packet packet = new Packet((int)ServerPackets.inCombat))
+        {
+            packet.Write(isInCombat);
+            SendTcpData(player_id,packet);
+        }
+    }
 }

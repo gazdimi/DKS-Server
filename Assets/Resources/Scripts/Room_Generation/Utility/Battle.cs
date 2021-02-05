@@ -19,6 +19,7 @@ public class Battle
         room.CloseDoors();
         playersInvolved = new List<GameObject>();
         AddPlayer(player);
+        Send.InCombat(player.GetComponent<ServerPlayer>().player_id, true);
         enemiesInvolved = new List<GameObject>();
     }
     /// <summary>
@@ -53,6 +54,7 @@ public class Battle
     {
         //player.GetComponent<Player>().enterCombat();
         playersInvolved.Add(player);
+        Send.InCombat(player.GetComponent<ServerPlayer>().player_id, true);
     }
     /// <summary>
     /// Removes a player from the battle.
@@ -62,6 +64,7 @@ public class Battle
     {
         //player.GetComponent<Player>().exitCombat();
         playersInvolved.Remove(player);
+        Send.InCombat(player.GetComponent<ServerPlayer>().player_id, false);
     }
     /// <summary>
     /// Adds an enemy to the battle.
