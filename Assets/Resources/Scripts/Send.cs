@@ -98,7 +98,7 @@ public class Send                                                       //prepar
         using (Packet packet = new Packet((int)ServerPackets.player_rotation))
         {
             packet.Write(player.player_id);
-            packet.Write(player.transform.rotation);                        //write to the packet player's new rotation
+            packet.Write(player.transform.forward);
             SendUdpDataToAll(player.player_id, packet);                     //inform everyone except the player that has been rotating
         }
     }

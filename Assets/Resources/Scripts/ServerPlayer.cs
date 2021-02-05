@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class ServerPlayer : MonoBehaviour                                 //[server-side] handling player's related data & logic
 {
@@ -52,10 +53,10 @@ public class ServerPlayer : MonoBehaviour                                 //[ser
         inputs = new float[2];                                       //initialize the array (according to joystick movement)
     }
 
-    public void SetInput(float[] local_inputs)//, Quaternion local_rotation)    //inputs according to pressed keywords, new rotation according to mouse input
+    public void SetInput(float[] local_inputs, Vector3 local_forward)    //inputs according to pressed keywords, new rotation according to mouse input
     {
         inputs = local_inputs;
-        //transform.rotation = local_rotation;
+        transform.forward = local_forward;
     }
 
     public void FixedUpdate()                                       //update player's new position (movement) by making suitable calculations
@@ -74,10 +75,7 @@ public class ServerPlayer : MonoBehaviour                                 //[ser
     {
         Vector3 rightMovement = right * moveSpeed * Time.deltaTime * inputs[0];
         Vector3 upMovement = forward * moveSpeed * Time.deltaTime * inputs[1];
-
-        Vector3 heading = Vector3.Normalize(rightMovement + upMovement);
-
-        transform.forward = heading; //in order to move according to camera rotation and NOT global position.
+        
         transform.position += rightMovement;
         transform.position += upMovement;
 
