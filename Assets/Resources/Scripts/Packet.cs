@@ -23,7 +23,8 @@ public enum ServerPackets
     spawnEnemy,
     spawnMod,
     moveEnemy,
-    inCombat
+    inCombat,
+    returnEnemiesInCombat
 }
 
 //sent from client to server
@@ -34,7 +35,8 @@ public enum ClientPackets
     shoot,
     startgame,
     pen_values,
-    hold_weapon
+    hold_weapon,
+    askEnemiesForCombat
 }
 
 public class Packet : IDisposable                               //interface that provides a mechanism for releasing unmanaged resources

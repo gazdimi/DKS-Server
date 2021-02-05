@@ -29,7 +29,7 @@ public class Handle                                                             
         {
             inputs[i] = packet.ReadFloat();
         }
-        Server.clients[fromClient].player.SetInput(inputs,packet.ReadVector3());//, rotation);           //send extracted info about player's movement (for specified client) to get handled
+        Server.clients[fromClient].player.SetInput(inputs,packet.ReadVector3());           //send extracted info about player's movement (for specified client) to get handled
     }
 
     public static void Shooted(int fromClient, Packet packet) 
@@ -58,5 +58,17 @@ public class Handle                                                             
         Server.clients[fromClient].player.ShowWeapon(weapon_id);
         Send.RemotePlayerWeapon(player_id, weapon_id);
 
+    }
+
+    public static void AskCombatEnemies(int fromClient, Packet packet)
+    {
+        int player_id = packet.ReadInt();
+        //ConnectionEnemyHandler.GetInstance().allExistingEnemies
+        List<int> indexes = new List<int>();
+        foreach(GameObject enemy in Battle_Manager.GetInstance().GetBattle(Server.clients[fromClient].player.gameObject).GetEnemies())
+        {
+            indexes.Add(ConnectionEnemyHandler.GetInstance().allExistingEnemies.FindIndex(x => x == enemy));
+        }
+        Send.ReturnCombatEnemies(player_id, indexes.ToArray());
     }
 }

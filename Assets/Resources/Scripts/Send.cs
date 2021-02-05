@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -248,6 +249,19 @@ public class Send                                                       //prepar
         {
             packet.Write(isInCombat);
             SendTcpData(player_id,packet);
+        }
+    }
+
+    public static void ReturnCombatEnemies(int player_id, int[] enemies)
+    {
+        using (Packet packet = new Packet((int)ServerPackets.returnEnemiesInCombat))
+        {
+            packet.Write(enemies.Length);
+            foreach (int e in enemies)
+            {
+                packet.Write(e);
+            }
+            SendTcpData(player_id, packet);
         }
     }
 }
