@@ -23,6 +23,7 @@ public class RoomEventsHandler : MonoBehaviour
             if (other.gameObject.tag.Equals("Player"))
             {
                 Battle_Manager.GetInstance().GetBattle(thisRoom).AddPlayer(other.gameObject);
+                
             }
             else if (other.gameObject.tag.Equals("Enemy"))
             {
