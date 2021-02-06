@@ -40,7 +40,9 @@ public class Handle                                                             
 
     public static void StartGame(int fromClient, Packet packet)
     {
-        SceneManager.LoadScene("DungeonScene");        
+        Send.LoadScene("DungeonScene");
+        SceneManager.LoadScene("DungeonScene");  
+     
     }
 
     public static void PenValues(int fromClient, Packet packet)

@@ -264,4 +264,12 @@ public class Send                                                       //prepar
             SendTcpData(player_id, packet);
         }
     }
+
+    public static void LoadScene(string scene_name) {
+
+        using (Packet packet = new Packet((int)ServerPackets.load_scene)) {
+            packet.Write(scene_name);
+            SendTcpDataToAll(packet);
+        }
+    }
 }

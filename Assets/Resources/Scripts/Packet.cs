@@ -24,7 +24,8 @@ public enum ServerPackets
     spawnMod,
     moveEnemy,
     inCombat,
-    returnEnemiesInCombat
+    returnEnemiesInCombat,
+    load_scene
 }
 
 //sent from client to server

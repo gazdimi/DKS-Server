@@ -26,7 +26,7 @@ public class NetworkManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         QualitySettings.vSyncCount = 0;                         //unity settings about fps
         Application.targetFrameRate = 30;
-        Server.StartServer(4, 25565);
+        Server.StartServer(4, 25565);                           //25565
     }
 
     public ServerPlayer InstatiatePlayer(int client_id) {
