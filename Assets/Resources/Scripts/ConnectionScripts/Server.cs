@@ -15,13 +15,13 @@ public class Server
     public static Dictionary<int, Client> clients = new Dictionary<int, Client>();          //(key = client's id, value = instance of Client)
 
     public delegate void PacketHandler(int fromClient, Packet packet);
-    public static Dictionary<int, PacketHandler> packetHandlers;                            //packet's id, corresponding packet handler
+    public static Dictionary<int, PacketHandler> packetHandlers;                            //packet's id, corresponding packet handler (method to invoke)
 
     public static void StartServer(int m, int p)
     {
         maximum_players = m; port = p;
 
-        Console.WriteLine("Starting server...\nWaiting for connections...");
+        Debug.Log("Starting server...\nWaiting for connections..."); //Console.WriteLine
 
         InitializedServerData();                                                                //initialize dictionary of clients (server's necessary data)
         tcpListener = new TcpListener(IPAddress.Any, port);
@@ -31,7 +31,7 @@ public class Server
         udpListener = new UdpClient(port);
         udpListener.BeginReceive(UdpReceivedCallback, null);                                    //start asynchronous receive using udp
 
-        Console.WriteLine($"Server started successfully on {port}...");
+        Debug.Log($"Server started successfully on {port}...");
     }
 
     private static void DoAcceptTcpClientCallback(IAsyncResult asyncResult)                     //gets called after successful client-server tcp connection and handles the newly created tcp connection  
@@ -39,7 +39,7 @@ public class Server
         TcpClient client = tcpListener.EndAcceptTcpClient(asyncResult);                         //accept incoming connection and return TcpClient instance for handling remote host communication
         tcpListener.BeginAcceptTcpClient(new AsyncCallback(DoAcceptTcpClientCallback), null);   //continue listening for connections (once a client connects)
 
-        Console.WriteLine($"Incoming connection from ... {client.Client.RemoteEndPoint}");
+        Debug.Log($"Incoming connection from ... {client.Client.RemoteEndPoint}");
         for (int i = 1; i <= maximum_players; i++)
         {
             if (clients[i].tcp.socket == null)
@@ -48,7 +48,7 @@ public class Server
                 return;
             }
         }
-        Console.WriteLine($"{client.Client.RemoteEndPoint} failed remote client to connect --> full server");
+        Debug.Log($"{client.Client.RemoteEndPoint} failed remote client to connect --> full server");
     }
 
     private static void UdpReceivedCallback(IAsyncResult asyncResult)                       //gets called after successful client-server udp attempt to connect and starts receiving incoming data via udp 
@@ -81,8 +81,8 @@ public class Server
                 }
             }
         }
-        catch (Exception e) { 
-            Console.WriteLine($"Error occurred while receiving UDP data from server: {e}"); 
+        catch (Exception e) {
+            Debug.Log($"Error occurred while receiving UDP data from server: {e}"); 
         }
     }
 
@@ -105,16 +105,15 @@ public class Server
             clients.Add(i, new Client(i));                                                  //(key = client's id, value = instance of Client)
         }
         packetHandlers = new Dictionary<int, PacketHandler>()
-            {
+        {
                 { (int) ClientPackets.welcomeReceived, Handle.Welcome_Received},
                 { (int) ClientPackets.player_movement, Handle.PlayerMovement},
-                { (int) ClientPackets.shoot, Handle.Shooted },
                 { (int) ClientPackets.startgame, Handle.StartGame },
                 { (int) ClientPackets.pen_values, Handle.PenValues },
                 { (int) ClientPackets.hold_weapon, Handle.PlayerHoldWeapon },
                 { (int) ClientPackets.askEnemiesForCombat, Handle.AskCombatEnemies }
-            };
-        Console.WriteLine($"Server: initiliazation of packets have been completed");
+        };
+        Debug.Log($"Server: initiliazation of packets have been completed");
     }
 
     public static void Stop() {

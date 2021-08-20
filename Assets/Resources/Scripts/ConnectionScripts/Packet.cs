@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Text;
@@ -12,8 +11,6 @@ public enum ServerPackets
     player_position,
     player_rotation,
     disconnected_player,
-    player_health,
-    regenerated_player,
     generate_Tile,
     generate_IRoom,
     askPen,
@@ -33,7 +30,6 @@ public enum ClientPackets
 {
     welcomeReceived = 1,
     player_movement,
-    shoot,
     startgame,
     pen_values,
     hold_weapon,
@@ -80,10 +76,10 @@ public class Packet : IDisposable                               //interface that
         buffer.InsertRange(0, BitConverter.GetBytes(buffer.Count));
     }
 
-    public void InsertInt(int value)                           //insert given integer at the start of the buffer (int is equal to 4 bytes)
+    /*public void InsertInt(int value)                           //insert given integer at the start of the buffer (int is equal to 4 bytes)
     {
         buffer.InsertRange(0, BitConverter.GetBytes(value));
-    }
+    }*/
 
     public byte[] ToArray()                                     //convert packet's content to an array in order to be readable
     {
@@ -116,30 +112,30 @@ public class Packet : IDisposable                               //interface that
     }
     //------------------------------------------------------------------------------------------------------------------------------
 
-    public void Write(byte value)                              //add given byte to the packet (buffer)
+    /*public void Write(byte value)                              //add given byte to the packet (buffer)
     {
         buffer.Add(value);
-    }
+    }*/
 
     public void Write(byte[] value)                            //add given array of bytes to the packet
     {
         buffer.AddRange(value);
     }
 
-    public void Write(short value)                             //add given short integer to the packet
+    /*public void Write(short value)                             //add given short integer to the packet
     {
         buffer.AddRange(BitConverter.GetBytes(value));
-    }
+    }*/
 
     public void Write(int value)                               //add given int to the packet
     {
         buffer.AddRange(BitConverter.GetBytes(value));
     }
 
-    public void Write(long value)                              //add given long int to the packet
+    /*public void Write(long value)                              //add given long int to the packet
     {
         buffer.AddRange(BitConverter.GetBytes(value));
-    }
+    }*/
 
     public void Write(float value)                             //add given float to the packet
     {
@@ -174,7 +170,7 @@ public class Packet : IDisposable                               //interface that
 
     //--------------------------------------------------------------------------------------------------------------------------
 
-    public byte ReadByte(bool moveReadPos = true)              //read a byte from the packet
+    /*public byte ReadByte(bool moveReadPos = true)              //read a byte from the packet
     {
         if (buffer.Count > readPos)
         {
@@ -190,7 +186,7 @@ public class Packet : IDisposable                               //interface that
         {
             throw new Exception("Could not read value of type 'byte'!");
         }
-    }
+    }*/
 
     public byte[] ReadBytes(int length, bool moveReadPos = true)  //reads an array of bytes from the packet (length of the byte array
     {
@@ -210,7 +206,7 @@ public class Packet : IDisposable                               //interface that
         }
     }
 
-    public short ReadShort(bool moveReadPos = true)                        //read a short integer from packet
+    /*public short ReadShort(bool moveReadPos = true)                        //read a short integer from packet
     {
         if (buffer.Count > readPos)
         {
@@ -226,7 +222,7 @@ public class Packet : IDisposable                               //interface that
         {
             throw new Exception("Could not read value of type 'short'...");
         }
-    }
+    }*/
 
     public int ReadInt(bool moveReadPos = true)                            //read an int from the packet
     {
@@ -246,7 +242,7 @@ public class Packet : IDisposable                               //interface that
         }
     }
 
-    public long ReadLong(bool moveReadPos = true)                          //read a long from the packet
+    /*public long ReadLong(bool moveReadPos = true)                          //read a long from the packet
     {
         if (buffer.Count > readPos)
         {
@@ -262,7 +258,7 @@ public class Packet : IDisposable                               //interface that
         {
             throw new Exception("Could not read value of type 'long'...");
         }
-    }
+    }*/
 
     public float ReadFloat(bool moveReadPos = true)                        //read a float from the packet
     {
@@ -282,7 +278,7 @@ public class Packet : IDisposable                               //interface that
         }
     }
 
-    public bool ReadBool(bool moveReadPos = true)                          //read a bool from the packet
+    /*public bool ReadBool(bool moveReadPos = true)                          //read a bool from the packet
     {
         if (buffer.Count > readPos)
         {
@@ -298,7 +294,7 @@ public class Packet : IDisposable                               //interface that
         {
             throw new Exception("Could not read value of type 'bool'...");
         }
-    }
+    }*/
 
     public string ReadString(bool moveReadPos = true)                      //read a string from the packet
     {
@@ -323,10 +319,10 @@ public class Packet : IDisposable                               //interface that
         return new Vector3(ReadFloat(moveReadPos), ReadFloat(moveReadPos), ReadFloat(moveReadPos));     //return the created instance
     }
 
-    public Quaternion ReadQuaternion(bool moveReadPos = true)              //read Quaternion from the packet
+    /*public Quaternion ReadQuaternion(bool moveReadPos = true)              //read Quaternion from the packet
     {
         return new Quaternion(ReadFloat(moveReadPos), ReadFloat(moveReadPos), ReadFloat(moveReadPos), ReadFloat(moveReadPos));
-    }
+    }*/
 
     //------------------------------------------------------------------------------------------------------------------------------
 
