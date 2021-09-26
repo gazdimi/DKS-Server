@@ -7,7 +7,7 @@ public class TCP
     public TcpClient socket;
     private readonly int id;
     private NetworkStream stream;
-    private byte[] received_buffer;
+    private byte[] read_buffer;
     private Packet received_packet;                         //packet (sent by client) and received from server
 
     public TCP(int i)                                       //constructor of inner class TCP
@@ -23,31 +23,31 @@ public class TCP
 
         stream = socket.GetStream();                        //get the NetworkStream used to send and receive data from TcpClient
         received_packet = new Packet();                     //initialize packet instance
-        received_buffer = new byte[Client.dataBufferSize];
-        stream.BeginRead(received_buffer, 0, Client.dataBufferSize, TcpReceiveCallback, null); //begin to read from NetworkStream asynchronously
+        read_buffer = new byte[Client.dataBufferSize];
+        stream.BeginRead(read_buffer, 0, Client.dataBufferSize, TcpNetworkStreamCallback, null); //begin to read from NetworkStream asynchronously
 
         Send.Welcome(id, "Welcome to the server!!");        //once client-server communication has been established, send a welcome packet from server to the client (handshake)
     }
 
-    private void TcpReceiveCallback(IAsyncResult asyncResult) //read incoming packet-data from NetworkStream
+    private void TcpNetworkStreamCallback(IAsyncResult asyncResult) //read incoming packet-data from NetworkStream
     {
         try
         {
             int byte_length = stream.EndRead(asyncResult);  //return number of bytes that have been read from NetworkStream then end the asynchronous read
             if (byte_length <= 0)
             {
-                Server.clients[id].Disconnect();                //will disconnect both tcp and udp connections
+                Server.clients[id].Disconnect();            //will disconnect both tcp and udp connections
                 return;
             }
-            byte[] data = new byte[byte_length];                //if data has been received, create new buffer for the data
-            Array.Copy(received_buffer, data, byte_length);     //copy from one array to another
-            received_packet.Reset(HandleData(data));            //reset Packet instance so it can be reused, but first get data from the packet
-            stream.BeginRead(received_buffer, 0, Client.dataBufferSize, TcpReceiveCallback, null);    //continue reading data from the NetworkStream
+            byte[] data = new byte[byte_length];            //if data has been received, create new buffer for the data
+            Array.Copy(read_buffer, data, byte_length);     //copy from one array to another
+            received_packet.Clear(HandleData(data));        //clear Packet instance so it can be reused, but first get data from the packet
+            stream.BeginRead(read_buffer, 0, Client.dataBufferSize, TcpNetworkStreamCallback, null);    //continue reading data from the NetworkStream
         }
         catch (Exception e)
         {
             Debug.Log($"Error occured while receiving TCP data: {e}");
-            Server.clients[id].Disconnect();                    //will disconnect both tcp and udp connections
+            Server.clients[id].Disconnect();                //will disconnect both tcp and udp connections
         }
     }
 
@@ -58,7 +58,7 @@ public class TCP
             if (socket != null)                             //check if client's socket has been initialized
             {
 
-                stream.BeginWrite(packet.ToArray(), 0, packet.Length(), null, null);
+                stream.BeginWrite(packet.ToArray(), 0, packet.ContentLength(), null, null);
             }
         }
         catch (Exception e)
@@ -115,7 +115,7 @@ public class TCP
         socket.Close();                                         //dispose TcpClient instance
         stream = null;                                          //empty NetworkStream
         received_packet = null;                                 //empty Packet instance
-        received_buffer = null;
+        read_buffer = null;
         socket = null;
     }
 }

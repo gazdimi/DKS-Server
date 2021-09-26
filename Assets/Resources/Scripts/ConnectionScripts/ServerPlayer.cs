@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 
 public class ServerPlayer : MonoBehaviour                                 //[server-side] handling player's related data & logic
 {
@@ -16,8 +15,6 @@ public class ServerPlayer : MonoBehaviour                                 //[ser
     public float moveSpeed = 4f;
 
     public Vector3 forward, right;
-
-    //public CharacterController control;
 
     public float neuro = 0;
     public float extra = 0;
@@ -41,7 +38,7 @@ public class ServerPlayer : MonoBehaviour                                 //[ser
         inputs = new float[2];                                       //initialize the array (according to joystick movement)
     }
 
-    public void SetInput(float[] local_inputs, Vector3 local_forward)    //inputs according to pressed keywords, new rotation according to mouse input
+    public void SetInput(float[] local_inputs, Vector3 local_forward)    //inputs according to joystick keywords
     {
         inputs = local_inputs;
         transform.forward = local_forward;

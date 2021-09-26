@@ -2,7 +2,7 @@
 
 public class Client
 {
-    public int client_id;
+    public int client_id { get; private set; }
     public TCP tcp;
     public UDP udp;
     public static int dataBufferSize = 4096;                    //bytes
@@ -17,7 +17,7 @@ public class Client
 
     public void SendToLobby(string player_name, Vector3 forward, Vector3 right)                  //send new client (local player) to lobby
     {
-        player = NetworkManager.network_manager.InstatiatePlayer(client_id); //initialize player instance
+        player = NetworkManager.GetInstance().InstatiatePlayer(client_id);                      //initialize player instance
         player.InitializePlayer(client_id, player_name, forward, right);
         foreach (Client client in Server.clients.Values)
         {                                                       //send info from all other players (already connected to the new connected player)

@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Client" Collapsed="true">
+    <Position X="1.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAABAAAAAEAAAAAQAAAABAAAAAAAAIAA=</HashCode>
+      <FileName>Assets\Resources\Scripts\ConnectionScripts\Client.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConnectionEnemyHandler" Collapsed="true">
+    <Position X="8" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABABAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Assets\Resources\Scripts\ConnectionScripts\ConnectionEnemyHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handle" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwAAggAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Assets\Resources\Scripts\ConnectionScripts\Handle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkManager" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAACAAAAAAAAAAAAAABgBAAAAAAAQAAAAAAEA=</HashCode>
+      <FileName>Assets\Resources\Scripts\ConnectionScripts\NetworkManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Packet" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="1.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIACCgAACAAAAAAAAAQAAAAAIAAAVAAIABAgAFAAAA=</HashCode>
+      <FileName>Assets\Resources\Scripts\ConnectionScripts\Packet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Send" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAgACIgAAAJIAAAAAACEAAAAAAQkAAJAAAhEAwQAA=</HashCode>
+      <FileName>Assets\Resources\Scripts\ConnectionScripts\Send.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Server" Collapsed="true">
+    <Position X="1.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABgABAAQEAgAAAgAQAAIAAAEAEAAAA=</HashCode>
+      <FileName>Assets\Resources\Scripts\ConnectionScripts\Server.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServerPlayer" Collapsed="true">
+    <Position X="8" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgEQEqAEABAgABAAAAEAABAAABAAIAAAEAAQgAA=</HashCode>
+      <FileName>Assets\Resources\Scripts\ConnectionScripts\ServerPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TasksOnStart" Collapsed="true">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Resources\Scripts\ConnectionScripts\TasksOnStart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TCP" Collapsed="true">
+    <Position X="4.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAAAICAAAAAAAAAAIAAAACAAAAACgEAAAAAAgA=</HashCode>
+      <FileName>Assets\Resources\Scripts\ConnectionScripts\TCP.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ThreadManager" Collapsed="true">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgBAAAAAAAAEAAAAAACAAAAEAAAAAAAAQAA=</HashCode>
+      <FileName>Assets\Resources\Scripts\ConnectionScripts\ThreadManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UDP" Collapsed="true">
+    <Position X="4.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAoAAAABAAAAAAIAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Resources\Scripts\ConnectionScripts\UDP.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="ServerPackets" Collapsed="true">
+    <Position X="2.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ADAgBBAAAAAIAoAAAAAAAAAAAAEACAAAIEAAQAQABIA=</HashCode>
+      <FileName>Assets\Resources\Scripts\ConnectionScripts\Packet.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ClientPackets" Collapsed="true">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEABAAAAAAAAAACAEAAAAAAAAAAAAIAAAQAAAAAA=</HashCode>
+      <FileName>Assets\Resources\Scripts\ConnectionScripts\Packet.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

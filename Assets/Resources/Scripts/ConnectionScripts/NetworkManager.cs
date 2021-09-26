@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class NetworkManager : MonoBehaviour
 {
-    public static NetworkManager network_manager;                //NetworkManager instance
+    private static NetworkManager instance = null;                //NetworkManager instance
     public GameObject player_prefab;
 
     private void Awake()
     {
-        if (network_manager == null)
+        GetInstance();
+    }
+
+    //singleton pattern - only one instance of NetworkManager class must exist
+    private NetworkManager()
+    {
+        instance = this;
+    }
+
+    public static NetworkManager GetInstance()
+    {
+        if (instance == null)
         {
-            network_manager = this;                             //set it equal to the instance of NetworkManager class
+            return new NetworkManager();
         }
-        else if (network_manager != this)
-        {
-            Debug.Log("Incorrect instance needs to be destroyed...");
-            Destroy(this);                                      //only one instance of NetworkManager class must exist
-        }
+        return instance;
     }
 
     //Start is called before the first frame update
